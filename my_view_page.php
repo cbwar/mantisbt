@@ -92,6 +92,22 @@ reset( $t_boxes );
 $t_project_id = helper_get_current_project();
 $t_timeline_view_threshold_access = access_has_project_level( config_get( 'timeline_view_threshold' ) );
 $t_timeline_view_class = ( $t_timeline_view_threshold_access ) ? "col-md-7" : "col-md-6";
+
+if ( $t_project_id != 0 ) {
+    $t_project = project_get_row( $t_project_id );
+    ?>
+    <div class="col-xs-12">
+        <div class="widget-box widget-color-blue2">
+            <div class="widget-header widget-header-small">
+                <h4 class="widget-title lighter"><strong><?= $t_project['name'] ?></strong> <em>Description du projet</em></h4>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main"><?= string_display_links( $t_project['description'] ) ?></div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
 ?>
 <div class="col-xs-12 <?php echo $t_timeline_view_class ?>">
 
